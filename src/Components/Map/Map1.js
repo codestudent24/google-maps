@@ -1,30 +1,47 @@
-import React, { useState } from 'react';
-import L from 'leaflet';
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import React from 'react';
+import { YMaps, Map, SearchControl } from 'react-yandex-maps'
 import './Map.css';
+import ErrorBoundary from '../../ErrorBoundary';
 
-L.Icon.Default.imagePath = "https://unpkg.com/leaflet@1.5.0/dist/images/";
+const mapState = { center: [55.76, 37.64], zoom: 13 };
+/*
+const mapOptions = {
+  // modules: ["geocode", "SuggestView"],
+  // defaultOptions: { suppressMapOpenBlock: true },
+  width: 600,
+  height: 400,
+};
+
+const geolocationOptions = {
+  defaultOptions: { maxWidth: 128 },
+  defaultData: { content: "Determine" },
+};
 
 const initialState = {
-  lat: 55.702868,
-  lng: 37.530865,
-  zoom: 13
-}
-
+  title: "",
+  center: [55.749451, 37.542824],
+  zoom: 12,
+};
+*/
 export const MapComponent = () => {
-  const [state, setState] = useState(initialState)
-  const position=[state.lat, state.lng]
   return (
-    <MapContainer zoom={state.zoom} center={position} scrollWheelZoom={false}>
-    <TileLayer
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-    <Marker position={position}>
-      <Popup>
-        A pretty CSS3 popup. <br /> Easily customizable.
-      </Popup>
-    </Marker>
-    </MapContainer>
+    <YMaps
+      query={{ apikey: "130cd972-fc9d-481f-9532-88691fb09c97", lang: "ru_RU" }}
+    >
+      <ErrorBoundary fallback="error">
+        <Map state={mapState} width={"800px"} height={"600px"} >
+          <SearchControl  options={{
+            float: "right",
+            floatIndex: 300,
+            provider: "yandex#search",
+            geoObjectStandardPreset: "islands#blueDotIcon",
+            placeholderContent: "Поиск мест и адресов",
+            maxWidth: 320,
+            size: "large" }} />
+        </Map>
+      </ErrorBoundary>
+      <div className='map-container'>
+      </div>
+    </YMaps>
   )
 }
