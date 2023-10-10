@@ -1,9 +1,10 @@
 import './App.css';
-import { MapComponent } from './Components/Map/Map1';
+import "leaflet/dist/leaflet.css";
+import Map from './Components/Map/Map1';
 
 function App() {
   return (
-    <MapComponent />
+    <Map />
   );
 }
 

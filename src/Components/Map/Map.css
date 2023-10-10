@@ -1,5 +1,16 @@
-.map-container {
+.leaflet-container {
+  height: 100vh;
+}
+
+.cluster-icon {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  background-color: #FFF;
+  transform: translate(-25%, -25%);
   display: flex;
   justify-content: center;
-  margin: 20px auto;
+  align-items: center;
+  font-weight: 900;
+  font-size: 1.25rem;
 }
