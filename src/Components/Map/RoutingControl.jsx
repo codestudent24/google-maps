@@ -4,8 +4,13 @@ import { useMap } from "react-leaflet";
 import "leaflet-routing-machine";
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css'
 
-const customIcon = new Icon({
+const customIconStart = new Icon({
   iconUrl: require('../../assets/geomarker.png'),
+  iconSize: [38, 38]
+})
+
+const customIconEnd = new Icon({
+  iconUrl: require('../../assets/bankicon.png'),
   iconSize: [38, 38]
 })
 
@@ -29,7 +34,8 @@ export default function Routing(props) {
         ],
       },
       createMarker: function(i, wp, nWps) {
-        return L.marker(wp.latLng, {icon: customIcon });
+        if (i === 0) return L.marker(wp.latLng, {icon: customIconStart });
+        return L.marker(wp.latLng, {icon: customIconEnd });
       },
       routeWhileDragging: true
     }).addTo(map);
