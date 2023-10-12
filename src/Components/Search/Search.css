@@ -1,0 +1,10 @@
+.search {
+  height: 100vh;
+  min-width: 320px;
+  max-width: 400px;
+  background-color: #FFFFFF;
+}
+
+.search__list {
+  list-style: none;
+}

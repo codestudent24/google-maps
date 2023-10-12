@@ -2,8 +2,22 @@
   height: 100vh;
 }
 
+
+.leaflet-popup-content-wrapper {
+  position: relative;
+  bottom: 30px;
+}
+
+.leaflet-popup-tip-container {
+  bottom: 10px;
+}
+
+.leaflet-container .leaflet-popup a.leaflet-popup-close-button {
+  top: -30px;
+}
+
 .map-container {
-  width: 70%;
+  flex-grow: 2;
 }
 
 .cluster-icon {

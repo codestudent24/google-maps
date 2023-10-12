@@ -41,6 +41,7 @@ const Map = (props) => {
 
   const customBankIcon = new Icon({
     iconUrl: require('../../assets/bankicon.png'),
+    iconAnchor: [19, 38],
     iconSize: [38, 38]
   })
 
@@ -54,25 +55,6 @@ const Map = (props) => {
 
   return (
     <section className="map-container">
-      <input type="text" placeholder="Начало пути" ref={startRef} />
-      <input type="text" placeholder="Конец пути" ref={endRef} />
-      <button onClick={() => {
-        if (startRef.current && endRef.current) {
-          const startString = startRef.current.value;
-          const endString = endRef.current.value;
-          console.log(startString, endString)
-          if (startString.match(validPoint) === null || endString.match(validPoint) === null) {
-            console.log('неверные данные')
-          } else {
-            const startArray = startString.trim().split(', ')
-            const endArray = endString.trim().split(', ')
-            console.log(startArray, endArray)
-            console.log(...startArray)
-            setStart(startArray)
-            setEnd(endArray)
-          }
-        }
-      }}>Построить маршрут</button>
       <MapContainer
         center={mapCenter}
         zoom={13}
@@ -80,17 +62,15 @@ const Map = (props) => {
         style={{ height: "100vh", width: "100%", padding: 0 }}
         whenCreated={map => setMap(map)}
       >
-        {/* *************** */}
-        {/* Pass in our custom control layer here, inside of the map container */}
-        {/* *************** */}
         {props.markers.map((marker, index) =>
           <Marker
             position={marker.position}
             icon={customBankIcon}
             key={index}
           >
-          <Popup>
-            <h2>{marker.name}</h2>
+          <Popup autoClose={true} closeOnClick={true} >
+            <h2 style={{textAlign: 'center'}}>{marker.name}</h2>
+            <h4 style={{cursor: 'pointer'}} onClick={() => {setEnd(marker.position)}}>построить маршрут</h4>
           </Popup>
         </Marker>
         )}

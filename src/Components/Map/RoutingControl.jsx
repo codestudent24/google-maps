@@ -5,12 +5,14 @@ import "leaflet-routing-machine";
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css'
 
 const customIconStart = new Icon({
-  iconUrl: require('../../assets/geomarker.png'),
+  iconUrl: require('../../assets/geomarker2.png'),
+  iconAnchor: [19, 38],
   iconSize: [38, 38]
 })
 
 const customIconEnd = new Icon({
-  iconUrl: require('../../assets/bankicon.png'),
+  iconUrl: require('../../assets/bankicon3.png'),
+  iconAnchor: [19, 38],
   iconSize: [38, 38]
 })
 

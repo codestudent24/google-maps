@@ -1,0 +1,58 @@
+.search__item {
+  margin: 5px 10px;
+  padding: 20px;
+  border-radius: 25px;
+  background: #F1F1F1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.search__item:hover {
+  transform: scale(1.02);
+}
+
+.item__name {
+  font-size: 1.5rem;
+}
+
+.item__address {
+  color: #888888;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.item__rating {
+  margin: 5px 0;
+}
+
+.item__worktime {
+  font-size: 0.8rem;
+}
+
+.item__workload {
+  margin: 5px 0;
+}
+
+.item__workload span {
+  display: inline-block;
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: #FFFFFF;
+}
+
+.item__distance {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.distance__image-container {
+  width: 100%;
+}
+
+.distance__image {
+  display: block;
+  margin: 0 auto;
+  width: 32px;
+  height: 32px;
+}
