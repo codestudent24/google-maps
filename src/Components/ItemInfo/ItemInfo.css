@@ -1,0 +1,83 @@
+.item-description {
+  position: relative;
+  height: 100vh;
+  width: 400px;
+  margin-left: 20px;
+  border-radius: 25px;
+}
+
+.hidden {
+  display: none;
+}
+
+.item-description__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.item-description__close span {
+  display: block;
+  color: #000000;
+  font-family: sans-serif;
+  font-size: 1rem;
+}
+
+.item-description__image {
+  display: block;
+  margin-bottom: 20px;
+  width: 100%;
+  border-radius: 25px 25px 0 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.button-route-container {
+  margin-bottom: 62px;
+}
+
+.button-container .button-route {
+  width: 301px;
+  height: 47px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(0deg, #196DFF 0%, #196DFF 100%), linear-gradient(274deg, #0AF 14.72%, #0A2896 100.26%);
+}
+
+.button-container .button-route span {
+  position: relative;
+  top: -7px;
+  margin-right: 10px;
+  color: #FFF;
+  font-family: League Spartan, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.button-container .button-description {
+  margin-bottom: 4px;
+  padding-bottom: 4px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button-container .active {
+  color: #0A2896;
+  border-bottom: 3px solid #0A2896;
+  background-color: transparent;
+}

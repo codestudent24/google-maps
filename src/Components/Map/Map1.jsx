@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
-import L, { Icon, point, divIcon } from "leaflet";
+import React, { useEffect, useState } from "react";
+import { Icon, point, divIcon } from "leaflet";
 import {
   TileLayer,
   MapContainer,
@@ -7,7 +7,7 @@ import {
   Marker,
   Popup
 } from "react-leaflet";
-import MarkerClusterGroup from "react-leaflet-cluster"
+// import MarkerClusterGroup from "react-leaflet-cluster"
 import RoutingControl from './RoutingControl'
 import './Map.css'
 
@@ -15,7 +15,7 @@ const maps = {
   base: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 };
 
-const validPoint = /-?\d+\.\d+, -?\d+\.\d+/
+// const validPoint = /-?\d+\.\d+, -?\d+\.\d+/
 
 const getCenter = (point1, point2) => {
   return [point2[0] - point1[0], point2[1] - point1[1]]
@@ -25,10 +25,8 @@ const Map = (props) => {
   const [start, setStart] = useState(props.myPosition)
   const [end, setEnd] = useState(props.destination)
   const [mapCenter, setMapCenter] = useState(getCenter(start, end))
+  const [routeVehicle, setRouteVehicle] = useState('car')
   const [map, setMap] = useState(null);
-
-  const startRef = useRef(null)
-  const endRef = useRef(null)
 
   useEffect(() => {
     console.log('START NOW:', start)
@@ -74,7 +72,7 @@ const Map = (props) => {
           </Popup>
         </Marker>
         )}
-        <RoutingControl start={start} end={end} />
+        <RoutingControl start={start} end={end} routeVehicle={routeVehicle} />
         <LayersControl position="topright">
           <LayersControl.BaseLayer checked name="Map">
             <TileLayer

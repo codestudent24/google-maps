@@ -8,7 +8,8 @@ export const initialMarkers = [
     },
     rating: 3.5,
     workload: 9,
-    worktime: 'с 9:00 до 21:00',
+    worktime_from: '08:00',
+    worktime_till: '21:00',
     position: [55.751244, 37.608423],
   },
   {
@@ -20,7 +21,8 @@ export const initialMarkers = [
     },
     rating: 5,
     workload: 3,
-    worktime: 'c 9:00 до 22:00',
+    worktime_from: '10:00',
+    worktime_till: '22:00',
     position: [55.651244, 37.618423],
   },
   {
@@ -32,7 +34,8 @@ export const initialMarkers = [
     },
     rating: 2,
     workload: 5,
-    worktime: 'c 9:00 до 18:00',
+    worktime_from: '09:00',
+    worktime_till: '18:00',
     position: [55.751244, 37.718423]
   }
 ]

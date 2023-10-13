@@ -4,6 +4,8 @@ import { useMap } from "react-leaflet";
 import "leaflet-routing-machine";
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css'
 
+require('lrm-graphhopper');
+
 const customIconStart = new Icon({
   iconUrl: require('../../assets/geomarker2.png'),
   iconAnchor: [19, 38],
@@ -15,6 +17,8 @@ const customIconEnd = new Icon({
   iconAnchor: [19, 38],
   iconSize: [38, 38]
 })
+
+// const router = new L.Routing.M
 
 export default function Routing(props) {
   const map = useMap();
@@ -28,6 +32,11 @@ export default function Routing(props) {
         L.latLng(props.start), // 55.651244, 37.518423
         L.latLng(props.end) // 55.751244, 37.618423
       ],
+      router: L.Routing.graphHopper('325208ff-f18b-447b-b302-19cc07ea8236' , {
+        urlParameters: {
+            vehicle: props.routeVehicle
+        }
+      }),
       lineOptions: {
         styles: [
           {

@@ -11,3 +11,37 @@ export const calculateDistance = (point1, point2) => {
   if (resulrKm !== 0) return `${resulrKm} км ${resultMeters} м`
   return `${resultMeters} м`
 }
+
+export const findItem = (array, destination) => {
+  return array.find((marker) => {
+    return marker.position[0] === destination[0] && marker.position[1] === destination[1]
+  })
+}
+
+const urlAPI = 'https://virtserver.swaggerhub.com/Salex1440/BankBranchService/1.0.0/api/v1/bank/branch'
+
+export const getDataFromAPI = async (
+  minLat = 55.6,
+  minLon = 37.6,
+  maxLat = 55.8,
+  maxLon = 37.8,
+  limit = 5
+) => {
+  const query = `?minLat=${minLat}&minLon=${minLon}&maxLat=${maxLat}&maxLon=${maxLon}$limit=${limit}`
+  try {
+    const response = await fetch(`${urlAPI}${query}`, {
+      headers: {
+        "Content-Type": 'application/json',
+      }
+    })
+
+    if (!response.ok) {
+      throw new Error(`Getting data from API failed`)
+    }
+
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.log('Oops, error occured:\n', error.message)
+  }
+}

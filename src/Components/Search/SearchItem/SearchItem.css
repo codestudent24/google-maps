@@ -1,6 +1,6 @@
 .search__item {
   margin: 5px 10px;
-  padding: 20px;
+  padding-right: 20px;
   border-radius: 25px;
   background: #F1F1F1;
   font-family: Arial, Helvetica, sans-serif;
@@ -12,33 +12,9 @@
   transform: scale(1.02);
 }
 
-.item__name {
-  font-size: 1.5rem;
-}
-
-.item__address {
-  color: #888888;
-  font-size: 0.75rem;
-  font-weight: 400;
-}
-
-.item__rating {
-  margin: 5px 0;
-}
-
-.item__worktime {
-  font-size: 0.8rem;
-}
-
-.item__workload {
-  margin: 5px 0;
-}
-
-.item__workload span {
-  display: inline-block;
+.item__workload span:nth-of-type(2) {
+  margin-left: 5px;
   padding: 2px 5px;
-  border-radius: 5px;
-  color: #FFFFFF;
 }
 
 .item__distance {
