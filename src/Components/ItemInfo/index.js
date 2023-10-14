@@ -19,8 +19,8 @@ export const ItemInfo = (props) => {
         <span>x</span>
       </div>
       <img src={vtbImage} alt="vtb" className='item-description__image' />
-      <ItemAbout marker = {props.marker} />
-      <ButtonContainer />
+      {props.point && <ItemAbout point = {props.point} />}
+      <ButtonContainer setShowInfo={props.setShowInfo} latitude={props.point.latitude} longitude={props.point.longitude} />
       <ItemDescription />
     </div>
   )

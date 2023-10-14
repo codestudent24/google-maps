@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useSelector } from 'react-redux';
 import L, { Icon } from "leaflet";
 import { useMap } from "react-leaflet";
 import "leaflet-routing-machine";
@@ -22,21 +23,26 @@ const customIconEnd = new Icon({
 
 export default function Routing(props) {
   const map = useMap();
+  const destination = useSelector((state) => state.vtbData.destination)
+  const myPosition = useSelector((state) => state.vtbData.myPosition)
+  const vehicle = useSelector((state) => state.vtbData.vehicle)
 
   useEffect(() => {
     if (!map) return;
 
     const routingControl = L.Routing.control({
-      position: 'topleft',
+      position: 'topright',
       waypoints: [
-        L.latLng(props.start), // 55.651244, 37.518423
-        L.latLng(props.end) // 55.751244, 37.618423
+        L.latLng([myPosition.latitude, myPosition.longitude]), // 55.751244, 37.618423
+        L.latLng([destination.latitude, destination.longitude]), // 55.651244, 37.518423
       ],
       router: L.Routing.graphHopper('325208ff-f18b-447b-b302-19cc07ea8236' , {
         urlParameters: {
-            vehicle: props.routeVehicle
-        }
+            vehicle: vehicle,
+            locale: 'ru',
+        },
       }),
+      language: 'ru',
       lineOptions: {
         styles: [
           {
@@ -49,10 +55,12 @@ export default function Routing(props) {
         return L.marker(wp.latLng, {icon: customIconEnd });
       },
       routeWhileDragging: true
-    }).addTo(map);
+    })
+
+    if (map && routingControl) map.addControl(routingControl)
 
     return () => map.removeControl(routingControl);
-  }, [map, props.start, props.end]);
+  }, [map, destination, myPosition, vehicle]);
 
   return null;
 }

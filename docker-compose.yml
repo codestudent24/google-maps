@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+  bank-search-service:
+    container_name: bank-search-service
+    image: salexs/bank-branch-search:0.2
+    restart: always
+    ports:
+      - '8888:8888'
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    container_name: postgres_container
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+#  adminer:
+#    image: adminer
+#    container_name: adminer_container
+#    restart: always
+#    ports:
+#      - '8080:8080'

@@ -1,8 +1,14 @@
 .search {
-  height: 100vh;
-  min-width: 320px;
-  max-width: 400px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px 20px 10px;
+  height: calc(100vh - 20px);
+  width: 320px;
+  border-radius: 25px;
   background-color: #FFFFFF;
+  z-index: 1001;
+  overflow: scroll;
 }
 
 .search__list {

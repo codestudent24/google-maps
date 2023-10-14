@@ -14,22 +14,23 @@ export const calculateDistance = (point1, point2) => {
 
 export const findItem = (array, destination) => {
   return array.find((marker) => {
-    return marker.position[0] === destination[0] && marker.position[1] === destination[1]
+    return marker.latitude === destination.latitude && marker.longitude === destination.longitude
   })
 }
 
-const urlAPI = 'https://virtserver.swaggerhub.com/Salex1440/BankBranchService/1.0.0/api/v1/bank/branch'
+const urlAPI = '/api/v1/bank/branch'
 
 export const getDataFromAPI = async (
-  minLat = 55.6,
-  minLon = 37.6,
-  maxLat = 55.8,
-  maxLon = 37.8,
-  limit = 5
+  minLat = 40,
+  minLon = 20,
+  maxLat = 60,
+  maxLon = 40,
+  limit = 10
 ) => {
-  const query = `?minLat=${minLat}&minLon=${minLon}&maxLat=${maxLat}&maxLon=${maxLon}$limit=${limit}`
+  const query = `?minLat=${minLat}&minLon=${minLon}&maxLat=${maxLat}&maxLon=${maxLon}&limit=${limit}`
   try {
     const response = await fetch(`${urlAPI}${query}`, {
+      method: "GET",
       headers: {
         "Content-Type": 'application/json',
       }
