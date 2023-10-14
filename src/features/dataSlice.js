@@ -36,8 +36,10 @@ export const dataSlice = createSlice({
         if (!item.workload) item.workload = getRandomWorkload()
         setData.push(item)
       }
-      state.destination.latitude = setData[0].latitude
-      state.destination.longitude = setData[0].longitude
+      if (setData.length > 0) {
+        state.destination.latitude = setData[0].latitude
+        state.destination.longitude = setData[0].longitude
+      }
       state.fullData = setData
       state.data = setData
     },

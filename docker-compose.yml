@@ -4,7 +4,7 @@ services:
 
   bank-search-service:
     container_name: bank-search-service
-    image: salexs/bank-branch-search:0.2
+    image: salexs/bank-branch-search:0.3
     restart: always
     ports:
       - '8888:8888'
