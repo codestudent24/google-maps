@@ -23,7 +23,6 @@ export function Search() {
         longitude + 0.2
       )
       dispatch(setFullData(dataFromAPI))
-      console.log(dataFromAPI)
     }
     if (myPosition.latitude && myPosition.longitude) getData(myPosition.latitude, myPosition.longitude)
   }, [dispatch, myPosition])
@@ -52,15 +51,8 @@ export function Search() {
       <div
         className='search__empty'
         onClick={async () => {
-          const dataFromAPI = await getDataFromAPI(
-            // myPosition.latitude - 20,
-            // myPosition.longitude - 100,
-            // myPosition.latitude + 20,
-            // myPosition.longitude + 20
-            30, 30, 90, 180
-          ) || []
+          const dataFromAPI = await getDataFromAPI(41, 30, 77, 180) || []
           dispatch(setFullData(dataFromAPI))
-          console.log(dataFromAPI)
         }}
       >
         Кажется, возле Bac отделений нет. Нажите здесь, чтобы расширить поиск!

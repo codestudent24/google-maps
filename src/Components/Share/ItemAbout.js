@@ -11,6 +11,9 @@ const computedWorkloadColor = (workload=3) => {
 }
 
 export function ItemAbout(props) {
+  const workload = Math.round(props.point.waiting_time / 10)
+  let rating = Math.floor((110 - props.point.waiting_time) / 20)
+  if (rating > 5) rating = 5
   return (
     <div className='item__info'>
       <p className='item__name'>{props.point.name || 'ВТБ'}</p>
@@ -20,13 +23,13 @@ export function ItemAbout(props) {
         {props.point.city}
       </p>
       <p className='item__rating'>
-        <RatingSVG rating={props.point.rating || 4}/>
-        {props.point.rating || 4}
+        <RatingSVG rating={rating}/>
+        {rating}
       </p>
       <p className='item__worktime'>{`Открыто до ${props.point.schedule_till.slice(0, -3)}`}</p>
       {props.showWorkload && <p className='item__workload'>
-        <span style={{color: computedWorkloadColor(props.point.workload)}}>{`Нагруженность`}</span>
-        <span style={{backgroundColor: computedWorkloadColor(props.point.workload)}}>{props.point.workload}</span>
+        <span style={{color: computedWorkloadColor(workload)}}>{`Нагруженность`}</span>
+        <span style={{backgroundColor: computedWorkloadColor(workload)}}>{Math.round(workload)}</span>
       </p>}
     </div>
   );

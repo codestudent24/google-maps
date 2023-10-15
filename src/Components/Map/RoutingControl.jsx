@@ -19,9 +19,7 @@ const customIconEnd = new Icon({
   iconSize: [38, 38]
 })
 
-// const router = new L.Routing.M
-
-export default function Routing(props) {
+export default function Routing() {
   const map = useMap();
   const destination = useSelector((state) => state.vtbData.destination)
   const myPosition = useSelector((state) => state.vtbData.myPosition)
@@ -33,8 +31,8 @@ export default function Routing(props) {
     const routingControl = L.Routing.control({
       position: 'topright',
       waypoints: [
-        L.latLng([myPosition.latitude, myPosition.longitude]), // 55.751244, 37.618423
-        L.latLng([destination.latitude, destination.longitude]), // 55.651244, 37.518423
+        L.latLng([myPosition.latitude, myPosition.longitude]),
+        L.latLng([destination.latitude, destination.longitude]),
       ],
       router: L.Routing.graphHopper('325208ff-f18b-447b-b302-19cc07ea8236' , {
         urlParameters: {

@@ -25,9 +25,17 @@ export const getDataFromAPI = async (
   minLon = 20,
   maxLat = 60,
   maxLon = 40,
-  limit = 10
+  limit = 20,
+  filter = false,
+  individual = false,
+  legal_entity = false,
+  invalid = false,
+  privilegy = false,
+  weekend = false,
+  late_evening = false
 ) => {
-  const query = `?minLat=${minLat}&minLon=${minLon}&maxLat=${maxLat}&maxLon=${maxLon}&limit=${limit}`
+  let query = `?minLat=${minLat}&minLon=${minLon}&maxLat=${maxLat}&maxLon=${maxLon}&limit=${limit}`
+  if (filter) query += `&filter=${filter}&individual=${individual}&legal_entity=${legal_entity}&invalid=${invalid}&privilegy=${privilegy}&weekend=${weekend}&late_evening=${late_evening}`
   try {
     const response = await fetch(`${urlAPI}${query}`, {
       method: "GET",

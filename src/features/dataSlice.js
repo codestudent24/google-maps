@@ -15,12 +15,14 @@ const initialState = {
   }
 }
 
-const getRandomWorkload = () => {
-  return Math.round(Math.random() * 10)
+export const getRandomRating = () => {
+  return Math.round(Math.random() * 5)
 }
 
-const getRandomRating = () => {
-  return Math.round(Math.random() * 5)
+const isClose = (bank, position) => {
+  const long = (position.longitude - bank.longitude) * (position.longitude - bank.longitude)
+  const lat = (position.latitude - bank.latitude) * (position.latitude - bank.latitude)
+  return Math.sqrt(long + lat) < 0.05
 }
 
 export const dataSlice = createSlice({
@@ -33,10 +35,9 @@ export const dataSlice = createSlice({
         const item = action.payload[i]
         if (!item.name) item.name = 'ВТБ'
         if (!item.rating) item.rating = getRandomRating()
-        if (!item.workload) item.workload = getRandomWorkload()
         setData.push(item)
       }
-      if (setData.length > 0) {
+      if (setData.length > 0 && state.destination) {
         state.destination.latitude = setData[0].latitude
         state.destination.longitude = setData[0].longitude
       }
@@ -44,13 +45,10 @@ export const dataSlice = createSlice({
       state.data = setData
     },
     setData: (state, action) => {
-      let filteredData = state.fullData
-      console.log(action.payload)
-      console.log(filteredData)
-      if (action.payload.filters.includes('rating')) filteredData = filteredData.filter((bank) => bank.rating >=4 )
-      console.log(filteredData)
-      if (action.payload.filters.includes('workload')) filteredData = filteredData.filter((bank) => bank.workload <=4 )
-      console.log(filteredData)
+      let filteredData = action.payload.data
+      if (action.payload.filters.includes('rating')) filteredData = filteredData.filter((bank) => bank.waiting_time < 40 )
+      if (action.payload.filters.includes('workload')) filteredData = filteredData.filter((bank) => bank.waiting_time <= 50 )
+      if (action.payload.filters.includes('closest')) filteredData = filteredData.filter((bank) => isClose(bank, action.payload.position))
       state.data = [...filteredData]
     },
     getByAddress: (state, action) => {

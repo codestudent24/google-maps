@@ -27,6 +27,7 @@
   top: 10px;
   left: 50%;
   padding: 10px;
+  width: 35%;
   border-radius: 21px;
   border: 2px solid #AAA;
   background-color: #FFF;
@@ -71,12 +72,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .params__tag {
   padding: 5px 10px;
-  margin: 10px 2.5px 0;
+  margin: 2.5px 5px;
   border-radius: 10px;
   border: none;
   background: #F3F3F3;
