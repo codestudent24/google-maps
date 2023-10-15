@@ -9,9 +9,9 @@ import {
 } from "react-leaflet";
 import RoutingControl from './RoutingControl'
 import { LocationMarker, customBankIcon } from "./mapUtils";
-import './Map.css'
 import { setDestination } from "../../features/dataSlice";
 import { Tags } from "./Tags";
+import './Map.css'
 
 const maps = {
   base: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

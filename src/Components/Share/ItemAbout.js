@@ -1,6 +1,6 @@
 import React from 'react';
-import './ItemAbout.css';
 import { RatingSVG } from './svg';
+import './ItemAbout.css';
 
 const computedWorkloadColor = (workload=3) => {
   if (workload > 8) return '#ED280B'

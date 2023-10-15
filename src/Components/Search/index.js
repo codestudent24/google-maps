@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch} from 'react-redux'
 import { setFullData } from '../../features/dataSlice';
-import './Search.css';
 import { SearchItem } from './SearchItem';
 import { ItemInfo } from '../ItemInfo';
 import { getDataFromAPI } from './utils';
-import { useState } from 'react';
+import './Search.css';
 
 export function Search() {
   const vtbData = useSelector((state) => state.vtbData.data)
